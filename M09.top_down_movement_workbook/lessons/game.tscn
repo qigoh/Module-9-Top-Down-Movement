@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c62bk8cggi6yq"]
+
+[ext_resource type="PackedScene" uid="uid://p75euy1gcr34" path="res://lessons/runner.tscn" id="1_yasw7"]
+[ext_resource type="PackedScene" uid="uid://l5vkm11cgaib" path="res://lessons/simple_obstacle.tscn" id="2_4o7yg"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_yasw7")]
+
+[node name="SimpleObstacle" parent="." instance=ExtResource("2_4o7yg")]
+position = Vector2(171, 57)
