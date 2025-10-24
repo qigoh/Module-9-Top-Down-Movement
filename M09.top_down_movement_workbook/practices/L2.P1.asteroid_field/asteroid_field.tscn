@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://buajq6vu5bsh6"]
 
-[ext_resource type="PackedScene" path="res://assets/practice_assets/asteroid_spawner.tscn" id="1_8pdxx"]
-[ext_resource type="Script" path="res://assets/practice_assets/asteroid_spawner.gd" id="2_8hual"]
+[ext_resource type="PackedScene" uid="uid://chkrmqdqbln4f" path="res://assets/practice_assets/asteroid_spawner.tscn" id="1_8pdxx"]
 [ext_resource type="PackedScene" path="res://practices/L2.P1.asteroid_field/moving_ship.tscn" id="3_58ywj"]
-[ext_resource type="Script" path="res://practices/L2.P1.asteroid_field/moving_ship.gd" id="4_afvao"]
 
 [node name="Background" type="Node2D"]
 
@@ -19,8 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.364706, 0.12549, 0.776471, 1)
 
-[node name="AsteroidSpawner" type="Node2D" parent="." instance=ExtResource("1_8pdxx")]
-script = ExtResource("2_8hual")
+[node name="AsteroidSpawner" parent="." instance=ExtResource("1_8pdxx")]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." instance=ExtResource("3_58ywj")]
-script = ExtResource("4_afvao")
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_58ywj")]
