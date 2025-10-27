@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bj3tgytwgwgpt"]
 
-[ext_resource type="PackedScene" path="res://assets/practice_assets/practice_stage_2.tscn" id="1_u7835"]
-[ext_resource type="Script" path="res://practices/L5.P1.smooth_game/smooth_ship.gd" id="2_u0ovk"]
-[ext_resource type="Texture2D" path="res://assets/practice_assets/shape_ship.png" id="3_esyxg"]
+[ext_resource type="PackedScene" uid="uid://dog4gm50k5cuu" path="res://assets/practice_assets/practice_stage_2.tscn" id="1_u7835"]
+[ext_resource type="Script" uid="uid://cd6uqol3smtlg" path="res://practices/L5.P1.smooth_game/smooth_ship.gd" id="2_u0ovk"]
+[ext_resource type="Texture2D" uid="uid://d1xp2mgpkkc42" path="res://assets/practice_assets/shape_ship.png" id="3_esyxg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hqje"]
 radius = 48.0937
 
 [node name="SmoothGame" type="Node2D"]
 
-[node name="PracticeStage2" type="StaticBody2D" parent="." instance=ExtResource("1_u7835")]
+[node name="PracticeStage2" parent="." instance=ExtResource("1_u7835")]
 position = Vector2(0, -678)
 
 [node name="SmoothShip" type="CharacterBody2D" parent="."]
