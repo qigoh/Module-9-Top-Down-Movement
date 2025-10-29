@@ -15,7 +15,9 @@ const DOWN_RIGHT := Vector2.DOWN + Vector2.RIGHT
 const UP_LEFT := Vector2.UP + Vector2.LEFT
 const DOWN_LEFT := Vector2.DOWN + Vector2.LEFT
 
-var max_speed := 600.0
+@export var max_speed := 600.0
+@export var acceleration := 1200.0
+@export var deceleration := 1080.0
 # For this practice, we moved the direction vector outside the _physics_process() function.
 # This allows the interactive practice to read its value and test if your code passes!
 # You can access and change the direction variable inside the _physics_process() function as you did in the lesson.

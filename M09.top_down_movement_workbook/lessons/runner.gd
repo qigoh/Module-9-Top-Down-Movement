@@ -4,7 +4,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var max_speed := 600.0
+@export var max_speed := 600.0
+@export var acceleration := 1200.0
+@export var deceleration := 1080.0
 @onready var _skin: Sprite2D = %Skin
 const RUNNER_DOWN = preload("uid://c0i1ik45p7rhh")
 
@@ -21,8 +23,8 @@ const DOWN_LEFT := Vector2.DOWN + Vector2.LEFT
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -47,7 +49,15 @@ func _physics_process(delta: float) -> void:
 	
 	if direction_discrete.length() > 0.0:
 		_skin.flip_h = direction.x < 0.0
-	velocity = direction * max_speed
+	var is_move_input := direction.length() > 0.0
+	
+	if is_move_input:
+		var desired_velocity := direction * max_speed
+		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
+		print (desired_velocity)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+
 	#if direction:
 		#pass
 	#else:
