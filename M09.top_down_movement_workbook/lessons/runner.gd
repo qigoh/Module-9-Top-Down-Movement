@@ -7,19 +7,8 @@ const JUMP_VELOCITY = -400.0
 @export var max_speed := 600.0
 @export var acceleration := 1200.0
 @export var deceleration := 1080.0
-@onready var _skin: Sprite2D = %Skin
-const RUNNER_DOWN = preload("uid://c0i1ik45p7rhh")
+@onready var _runner_visual_red: RunnerVisual = %RunnerVisual
 
-const RUNNER_DOWN_RIGHT = preload("uid://cst3aklarj68")
-
-const RUNNER_RIGHT = preload("uid://b4etxv4c5w1mq")
-const RUNNER_UP = preload("uid://dtrvq16cx035")
-const RUNNER_UP_RIGHT = preload("uid://c7x3s5c2r5l86")
-
-const UP_RIGHT := Vector2.UP + Vector2.RIGHT
-const DOWN_RIGHT := Vector2.DOWN + Vector2.RIGHT
-const UP_LEFT := Vector2.UP + Vector2.LEFT
-const DOWN_LEFT := Vector2.DOWN + Vector2.LEFT
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -27,37 +16,32 @@ func _physics_process(delta: float) -> void:
 		#velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var direction_discrete := direction.sign()
-
-	match direction_discrete:
-		Vector2.UP:
-			_skin.texture = RUNNER_UP
-		Vector2.DOWN:
-			_skin.texture = RUNNER_DOWN
-		Vector2.RIGHT, Vector2.LEFT:
-			_skin.texture = RUNNER_RIGHT
-		UP_RIGHT, UP_LEFT:
-			_skin.texture = RUNNER_UP_RIGHT
-		DOWN_RIGHT, DOWN_LEFT:
-			_skin.texture = RUNNER_DOWN_RIGHT
+	if direction.length() > 0.0:
+		_runner_visual_red.angle = rotate_toward(_runner_visual_red.angle, direction.orthogonal().angle(), 8.0 * delta)
 	
-	if direction_discrete.length() > 0.0:
-		_skin.flip_h = direction.x < 0.0
 	var is_move_input := direction.length() > 0.0
 	
 	if is_move_input:
 		var desired_velocity := direction * max_speed
 		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
-		print (desired_velocity)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
-
+	if (velocity.length() > 0.0):
+		_runner_visual_red.animation_name = _runner_visual_red.Animations.WALK
+		var current_speed_percent := velocity.length()/max_speed
+		_runner_visual_red.animation_name = (
+			RunnerVisual.Animations.WALK
+			if current_speed_percent < 0.8
+			else RunnerVisual.Animations.RUN
+		)
+	else:
+		_runner_visual_red.animation_name = _runner_visual_red.Animations.IDLE
 	#if direction:
 		#pass
 	#else:

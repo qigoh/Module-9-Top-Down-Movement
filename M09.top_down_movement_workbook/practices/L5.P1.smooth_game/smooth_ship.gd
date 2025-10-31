@@ -15,13 +15,13 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		var desired_velocity := direction * max_speed
 		# Make the velocity progress toward the desired state over time.
-		velocity = desired_velocity
+		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 	else:
 		# Make the velocity go down to zero over time.
-		velocity = Vector2.ZERO
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 
 	if direction.length() > 0:
 		# Make sure to make the rotation progress towards the desired angle over time,
 		# use the `orthogonal()` method, and don't forget to use `rotation_speed`!
-		rotation = direction.angle()
+		rotation = rotate_toward(rotation, direction.orthogonal().angle(), rotation_speed * delta)
 	move_and_slide()
