@@ -1,6 +1,4 @@
 res://lessons/runner.tscn
 res://addons/gdpractice/assets/theme.tres
-res://lessons/runner.gd
-res://practices/L5.P1.smooth_game/smooth_ship.gd
-res://lessons/simple_obstacle.tscn
 res://assets/character_contour.gdshader
+res://lessons/runner.gd
