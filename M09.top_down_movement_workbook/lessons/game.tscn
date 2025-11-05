@@ -15,7 +15,7 @@ texture = ExtResource("1_4o7yg")
 [node name="Circuit" parent="." instance=ExtResource("3_gkp25")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_yasw7")]
-position = Vector2(-476, -814)
+position = Vector2(-493, -852)
 
 [node name="SimpleObstacle" parent="." instance=ExtResource("2_4o7yg")]
 position = Vector2(-250, -953)
