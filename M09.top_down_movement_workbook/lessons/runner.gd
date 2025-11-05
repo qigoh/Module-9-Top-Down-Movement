@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 @export var max_speed := 600.0
 @export var acceleration := 1200.0
 @export var deceleration := 1080.0
+@export var rotate_speed := 8.0
 @onready var _runner_visual_red: RunnerVisual = %RunnerVisual
 
 
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.length() > 0.0:
-		_runner_visual_red.angle = rotate_toward(_runner_visual_red.angle, direction.orthogonal().angle(), 8.0 * delta)
+		_runner_visual_red.angle = rotate_toward(_runner_visual_red.angle, direction.orthogonal().angle(), rotate_speed * delta)
 	
 	var is_move_input := direction.length() > 0.0
 	
