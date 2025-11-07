@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_dust_big.emitting = false
 		_dust.emitting = false
-		_runner_visual_red.animation_name = _runner_visual_red.Animations.IDLE
+		_runner_visual_red.animation_name = RunnerVisual.Animations.IDLE
 	#if direction:
 		#pass
 	#else:

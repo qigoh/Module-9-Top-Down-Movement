@@ -7,19 +7,21 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clmkp"]
 resource_local_to_scene = true
-size = Vector2(128, 128)
+size = Vector2(320, 192)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ptikn"]
 shader = ExtResource("1_hf0wn")
 shader_parameter/finish_line_text = ExtResource("3_3rxgf")
-shader_parameter/shape_ratio = Vector2(1, 1)
+shader_parameter/shape_ratio = Vector2(1.6666666, 1)
 
 [node name="FinishLine" type="Area2D"]
 script = ExtResource("1_xsfq1")
+area_width = 320
+area_height = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 64)
+position = Vector2(0, 96)
 shape = SubResource("RectangleShape2D_clmkp")
 
 [node name="Visual" type="ColorRect" parent="."]
@@ -30,9 +32,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_right = 64.0
-offset_bottom = 128.0
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.807843, 0.278431, 1)
@@ -40,6 +42,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ConfettisArea" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 64)
+position = Vector2(0, 96)
 gizmo_extents = 50.0
 script = ExtResource("4_hv75v")
