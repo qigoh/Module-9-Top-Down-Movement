@@ -9,6 +9,9 @@ const JUMP_VELOCITY = -400.0
 @export var deceleration := 1080.0
 @export var rotate_speed := 8.0
 @onready var _runner_visual_red: RunnerVisual = %RunnerVisual
+@onready var _dust: GPUParticles2D = %Dust
+@onready var _dust_big: GPUParticles2D = %DustBig
+
 
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	if (velocity.length() > 0.0):
+		_dust.emitting = true
+		_dust_big.emitting = true
 		_runner_visual_red.animation_name = _runner_visual_red.Animations.WALK
 		var current_speed_percent := velocity.length()/max_speed
 		_runner_visual_red.animation_name = (
@@ -42,6 +47,8 @@ func _physics_process(delta: float) -> void:
 			else RunnerVisual.Animations.RUN
 		)
 	else:
+		_dust_big.emitting = false
+		_dust.emitting = false
 		_runner_visual_red.animation_name = _runner_visual_red.Animations.IDLE
 	#if direction:
 		#pass
