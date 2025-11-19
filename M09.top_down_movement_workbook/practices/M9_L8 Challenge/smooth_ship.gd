@@ -7,14 +7,9 @@ var max_speed := 800.0
 var acceleration := 500.0
 var deceleration := 500.0
 var rotation_speed := 3.0
-var cutscene := false
-var destination :Vector2
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if (cutscene):
-		direction = global_position.direction_to(destination)
-
 	var is_moving := direction.length() > 0.0
 
 	if is_moving:

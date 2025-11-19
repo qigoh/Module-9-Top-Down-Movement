@@ -14,10 +14,10 @@ var tween: Tween
 
 func walk_to(destination_global_position: Vector2) -> void:
 	# Calculate the distance and direction to the destination.
-	distance = 0.0
-	direction = Vector2()
+	distance = global_position.distance_to(destination_global_position)
+	direction = global_position.direction_to(destination_global_position)
 	# Make sure to calculate the duration based on the distance to the target.
-	duration = 0
+	duration = distance/(max_speed)
 
 	# This code ensures that if the player clicks quickly, the previous "walk
 	# to" animation is cancelled and cannot conflict with the new destination.
