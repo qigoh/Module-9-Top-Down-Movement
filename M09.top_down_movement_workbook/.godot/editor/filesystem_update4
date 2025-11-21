@@ -1,10 +1,4 @@
-res://lessons/runner.tscn
+res://lessons/game.tscn
 res://addons/gdpractice/assets/theme.tres
 res://assets/character_contour.gdshader
-res://lessons/runner.gd
-res://lessons/game.tscn
 res://lessons/game.gd
-res://practices/L8.P1.move_to_mouse/move_to_mouse.tscn
-res://practices/L8.P1.move_to_mouse/move_to_mouse.gd
-res://practices/M9_L8 Challenge/smooth_game.tscn
-res://practices/L5.P1.smooth_game/smooth_ship.gd
