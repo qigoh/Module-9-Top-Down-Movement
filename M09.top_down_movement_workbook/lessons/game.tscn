@@ -64,3 +64,4 @@ script = ExtResource("8_tpjcj")
 metadata/_custom_type_script = "uid://57e8080cpukf"
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_tpjcj")]
+menu_opened_amount = 1.0
