@@ -6,10 +6,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8c4bg"]
 shader = ExtResource("2_vtnhc")
-shader_parameter/blur_amount = 0.0
+shader_parameter/blur_amount = 1.5000000712500001
 shader_parameter/tint = Color(0, 0, 0, 1)
-shader_parameter/tint_strength = 0.0
-shader_parameter/saturation = 1.0
+shader_parameter/tint_strength = 0.2
+shader_parameter/saturation = 0.30000000000000004
 
 [node name="PauseScreen" type="Control"]
 layout_mode = 3

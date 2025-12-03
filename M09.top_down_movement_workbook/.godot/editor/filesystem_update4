@@ -5,3 +5,4 @@ res://lessons/main_theme.tres
 res://assets/blur.gdshader
 res://lessons/pause_screen.gd
 res://lessons/game.tscn
+res://lessons/runner.tscn
