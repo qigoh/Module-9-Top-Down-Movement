@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bo036h5e77dxs"]
 
-[ext_resource type="Script" path="res://lessons/bouncer.gd" id="1_o17vw"]
+[ext_resource type="Script" uid="uid://bbqkr3onghe40" path="res://lessons/bouncer.gd" id="1_o17vw"]
 [ext_resource type="Texture2D" uid="uid://dbcmxo51msi8m" path="res://assets/runner/shadow.png" id="2_41ggd"]
 [ext_resource type="Texture2D" uid="uid://bkq3gfbp5fwqx" path="res://assets/circle_64x64.png" id="3_1wh80"]
 [ext_resource type="PackedScene" uid="uid://hjn4sr1lgmmx" path="res://assets/runner/runner_visual_purple.tscn" id="4_41ggd"]
@@ -77,7 +77,7 @@ shader_parameter/line_thickness = 4.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_d46nv"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Runner" type="CharacterBody2D"]
+[node name="Bouncer" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_o17vw")
 

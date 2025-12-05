@@ -8,12 +8,16 @@ const JUMP_VELOCITY = -400.0
 @export var acceleration := 1200.0
 
 @export var rotate_speed := 8.0
+
 @onready var _runner_visual: RunnerVisual = %RunnerVisualPurple
 @onready var _dust: GPUParticles2D = %Dust
 @onready var _dust_big: GPUParticles2D = %DustBig
 
+func get_player_global_position() -> Vector2:
+	return get_tree().root.get_node("Game/Runner").global_position
+
 func walk_to(destination_global_position:Vector2) -> void:
-	var direction := global_position.direction_to(destination_global_position)
+	var direction := global_position.direction_to(get_player_global_position())
 	_runner_visual.angle = direction.orthogonal().angle()
 	var distance := global_position.distance_to(destination_global_position)
 	var duration := distance/(max_speed* 0.2)

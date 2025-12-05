@@ -5,3 +5,5 @@ res://lessons/bouncer.tscn
 res://addons/gdpractice/assets/theme.tres
 res://assets/character_contour.gdshader
 res://lessons/bouncer.gd
+res://lessons/game.tscn
+res://lessons/game.gd
