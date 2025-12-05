@@ -1,4 +1,4 @@
-class_name Runner extends CharacterBody2D
+extends CharacterBody2D
 
 signal walked_to
 const SPEED = 300.0
@@ -6,9 +6,9 @@ const JUMP_VELOCITY = -400.0
 
 @export var max_speed := 600.0
 @export var acceleration := 1200.0
-@export var deceleration := 1080.0
+
 @export var rotate_speed := 8.0
-@onready var _runner_visual: RunnerVisual = %RunnerVisual
+@onready var _runner_visual: RunnerVisual = %RunnerVisualPurple
 @onready var _dust: GPUParticles2D = %Dust
 @onready var _dust_big: GPUParticles2D = %DustBig
 
@@ -40,17 +40,16 @@ func _physics_process(delta: float) -> void:
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction := global_position.direction_to(get_global_mouse_position())
 	if direction.length() > 0.0:
 		_runner_visual.angle = rotate_toward(_runner_visual.angle, direction.orthogonal().angle(), rotate_speed * delta)
 	
-	var is_move_input := direction.length() > 0.0
 	
-	if is_move_input:
-		var desired_velocity := direction * max_speed
-		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+	var distance := global_position.distance_to(get_global_mouse_position())
+	var speed := max_speed if distance > 100 else max_speed * distance/100
+	var desired_velocity := direction * speed
+	var steering_velocity := desired_velocity - velocity
+	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 	if (velocity.length() > 0.0):
 		_dust.emitting = true
 		_dust_big.emitting = true

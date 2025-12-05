@@ -6,3 +6,6 @@ res://assets/blur.gdshader
 res://lessons/pause_screen.gd
 res://lessons/game.tscn
 res://lessons/pause_screen.tscn
+res://lessons/bouncer.tscn
+res://lessons/bouncer.gd
+res://lessons/runner.gd
