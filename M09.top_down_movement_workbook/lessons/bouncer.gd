@@ -48,9 +48,8 @@ func _physics_process(delta: float) -> void:
 	var distance := global_position.distance_to(get_global_mouse_position())
 	var speed := max_speed if distance > 100 else max_speed * distance/100
 	var desired_velocity := direction * speed
-	var steering_velocity := desired_velocity - velocity
 	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
-	if (velocity.length() > 0.0):
+	if (velocity.length() > 10.0):
 		_dust.emitting = true
 		_dust_big.emitting = true
 		_runner_visual.animation_name = _runner_visual.Animations.WALK

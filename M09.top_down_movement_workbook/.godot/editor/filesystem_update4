@@ -1,11 +1,7 @@
-res://lessons/runner.tscn
+res://lessons/runner.gd
+res://practices/L5.P1.smooth_game/smooth_ship.gd
+res://lessons/main_theme.tres
+res://lessons/bouncer.tscn
 res://addons/gdpractice/assets/theme.tres
 res://assets/character_contour.gdshader
-res://lessons/main_theme.tres
-res://assets/blur.gdshader
-res://lessons/pause_screen.gd
-res://lessons/game.tscn
-res://lessons/pause_screen.tscn
-res://lessons/bouncer.tscn
 res://lessons/bouncer.gd
-res://lessons/runner.gd
