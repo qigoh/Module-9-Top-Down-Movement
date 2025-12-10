@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://p75euy1gcr34" path="res://lessons/runner.tscn" id="1_yasw7"]
 [ext_resource type="PackedScene" uid="uid://l5vkm11cgaib" path="res://lessons/simple_obstacle.tscn" id="2_4o7yg"]
 [ext_resource type="PackedScene" uid="uid://3bopmcm2n88c" path="res://lessons/obstacle_circuit.tscn" id="3_gkp25"]
-[ext_resource type="PackedScene" uid="uid://bo036h5e77dxs" path="res://lessons/bouncer.tscn" id="5_8c4bg"]
+[ext_resource type="PackedScene" uid="uid://budpgxkjtmw1f" path="res://lessons/bouncer.tscn" id="5_8c4bg"]
 [ext_resource type="PackedScene" uid="uid://xl56q8amb611" path="res://assets/finish_line/finish_line.tscn" id="5_sepuf"]
 [ext_resource type="Theme" uid="uid://cdcyvsn1fp8wa" path="res://assets/countdown/count_down_theme.tres" id="7_viysf"]
 [ext_resource type="Script" uid="uid://57e8080cpukf" path="res://assets/countdown/count_down.gd" id="8_tpjcj"]
-[ext_resource type="PackedScene" path="res://lessons/pause_screen.tscn" id="9_tpjcj"]
+[ext_resource type="PackedScene" uid="uid://dj6ye05dbiqpi" path="res://lessons/pause_screen.tscn" id="9_tpjcj"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -25,10 +25,9 @@ texture = ExtResource("1_4o7yg")
 unique_name_in_owner = true
 position = Vector2(-1008, -531)
 
-[node name="Bouncer" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_8c4bg")]
+[node name="Bouncer" parent="." instance=ExtResource("5_8c4bg")]
 unique_name_in_owner = true
 position = Vector2(-1147, -375)
-target = NodePath("../Runner")
 
 [node name="SimpleObstacle" parent="." instance=ExtResource("2_4o7yg")]
 position = Vector2(-252, -931)

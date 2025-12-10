@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 Button
 VBoxContainer
 CenterContainer
@@ -11,4 +13,3 @@ FinishLine
 GPUParticles2D
 Sprite2D
 SubViewport
-RunnerVisual
