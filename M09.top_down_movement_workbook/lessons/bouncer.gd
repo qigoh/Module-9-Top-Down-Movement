@@ -27,6 +27,7 @@ func finish_line() -> void:
 	_runner_visual.animation_name = RunnerVisual.Animations.IDLE
 	_dust.emitting = false
 	_dust_big.emitting = false
+	_hit_box.monitoring = false
 func walk_to(destination_global_position:Vector2) -> void:
 	var direction := global_position.direction_to(destination_global_position)
 	_runner_visual.angle = direction.orthogonal().angle()
