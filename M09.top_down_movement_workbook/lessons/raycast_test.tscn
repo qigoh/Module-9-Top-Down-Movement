@@ -6,6 +6,7 @@
 [node name="RaycastTest" type="Node2D"]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(168.64807, -130.4391)
 target_position = Vector2(128, 0)
 script = ExtResource("1_j13gy")
 
