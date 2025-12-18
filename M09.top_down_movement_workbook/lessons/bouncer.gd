@@ -6,13 +6,15 @@ const JUMP_VELOCITY = -400.0
 
 @export var max_speed := 600.0
 @export var acceleration := 1200.0
-
+@export var avoidance_strength := 21000.0
 @export var rotate_speed := 8.0
 
 @onready var _runner_visual: RunnerVisual = %RunnerVisualPurple
 @onready var _dust: GPUParticles2D = %Dust
 @onready var _dust_big: GPUParticles2D = %DustBig
 @onready var _hit_box: Area2D = $HitBox
+@onready var _raycasts: Node2D = %Raycasts
+
 
 func _ready() -> void:
 	_hit_box.body_entered.connect(func(body: Node) -> void:
@@ -44,6 +46,17 @@ func walk_to(destination_global_position:Vector2) -> void:
 		_dust_big.emitting = false
 		walked_to.emit())
 	
+func calculate_avoidance_force() -> Vector2:
+	var avoidance_force := Vector2.ZERO
+	for raycast: RayCast2D in _raycasts.get_children():
+		if raycast.is_colliding():
+			var collision_position := raycast.get_collision_point()
+			var ray_length := raycast.target_position.length()
+			var intensity := 1.0 - collision_position.distance_to(raycast.global_position)/ray_length
+			var direction_away_from_obstacle := collision_position.direction_to(raycast.global_position)
+			var force := direction_away_from_obstacle * intensity * avoidance_strength
+			avoidance_force += force
+	return avoidance_force
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -59,11 +72,13 @@ func _physics_process(delta: float) -> void:
 	var direction := global_position.direction_to(get_player_global_position())
 	if direction.length() > 0.0:
 		_runner_visual.angle = rotate_toward(_runner_visual.angle, direction.orthogonal().angle(), rotate_speed * delta)
+		_raycasts.rotation = _runner_visual.angle
 	
 	
 	var distance := global_position.distance_to(get_player_global_position())
 	var speed := max_speed if distance > 100 else max_speed * distance/100
 	var desired_velocity := direction * speed
+	desired_velocity += calculate_avoidance_force() * delta
 	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
 	if (velocity.length() > 10.0):
 		_dust.emitting = true
